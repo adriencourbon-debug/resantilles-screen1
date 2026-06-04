@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos 10 Engagements — Résantilles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06070E;--rose:#E8335E;--teal:#00B1B2;--gold:#FBBA00;--white:#FFFFFF;--current-accent:#E8335E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"Outfit",sans-serif;color:var(--white)}
+.bg-grid{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:0}
+
+header{position:fixed;top:0;left:0;right:0;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;z-index:100;background:rgba(6,7,14,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo-wrap{display:flex;align-items:center}
+.logo-wrap img{height:40px;width:auto;display:block}
+.header-right{display:flex;align-items:center;gap:16px}
+.header-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.22em}
+.dot-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.15)}
+.slide-counter{font-size:13px;font-weight:700;color:rgba(255,255,255,.4);font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.slide-counter .cur{color:var(--white);font-size:15px}
+
+main{position:fixed;inset:80px 0 62px 0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.slides-container{position:relative;width:100%;height:100%}
+
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 100px;opacity:0;pointer-events:none}
+.slide.entering{animation:sIn .7s cubic-bezier(.16,1,.3,1) forwards}
+.slide.exiting{animation:sOut .6s cubic-bezier(.7,0,.84,0) forwards}
+@keyframes sIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-40px)}}
+
+.ghost-num{font-family:"Bebas Neue",sans-serif;font-size:min(38vw,420px);line-height:.85;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.042;color:var(--accent);user-select:none;pointer-events:none;letter-spacing:-.02em}
+
+.slide-content{position:relative;z-index:5;text-align:center;max-width:900px;display:flex;flex-direction:column;align-items:center;gap:28px}
+
+.rule-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 24px;border-radius:100px;border:1.5px solid var(--accent);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.tag-num{font-family:"Bebas Neue",sans-serif;font-size:14px;letter-spacing:.15em}
+
+.rule-title{font-size:clamp(30px,4.6vw,60px);font-weight:800;line-height:1.1;letter-spacing:-.025em;color:var(--white)}
+.rule-title em{font-style:normal;color:var(--accent)}
+
+.rule-divider{width:56px;height:3px;background:var(--accent);border-radius:2px}
+.rule-text{font-size:clamp(15px,1.75vw,21px);font-weight:400;line-height:1.72;color:rgba(255,255,255,.66);max-width:700px}
+.rule-proposed{margin-top:4px;padding:10px 22px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);font-size:10.5px;font-weight:500;color:rgba(255,255,255,.25);letter-spacing:.1em;text-transform:uppercase}
+
+footer{position:fixed;bottom:0;left:0;right:0;height:62px;display:flex;align-items:center;padding:0 56px;gap:20px;z-index:100;background:rgba(6,7,14,.92);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.08)}
+.dots{display:flex;gap:7px;align-items:center}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.16);transition:all .4s ease;cursor:pointer}
+.dot.active{width:24px;border-radius:3px;background:var(--current-accent)}
+.progress-track{flex:1;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;border-radius:2px;background:var(--current-accent);width:0%;transition:background .5s ease}
+.time-lbl{font-size:11px;color:rgba(255,255,255,.2);font-weight:500;min-width:28px;text-align:right}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<header>
+  <div class="logo-wrap">
+    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6ICQkJC9HZW5lcmFsU3RyLzE5Nj1BZG9iZSBJbGx1c3RyYXRvciAyNy42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYWxxdWVfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDExNjEuOSAxODIuMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTE2MS45IDE4Mi4yOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cgkuc3Qxe2ZpbGw6I0U4MzM1RTt9Cgkuc3Qye2ZpbGw6IzAwQjFCMjt9Cgkuc3Qze2ZpbGw6I0ZCQkEwMDt9Cjwvc3R5bGU+CjxnPgoJPGc+CgkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTUzMC40LDMzLjhjOS43LTUuOCwyMS4xLTkuMSwzMy4yLTkuMWMxMi4xLDAsMjMuNSwzLjMsMzMuMiw5LjFINjE5QzYwNC44LDE5LjgsNTg1LjIsMTEsNTYzLjYsMTEKCQkJcy00MS4xLDguNy01NS40LDIyLjhINTMwLjR6Ii8+CgkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTYwNi4yLDEzOS4xYy0xMS40LDkuOS0yNi4zLDE1LjktNDIuNiwxNS45Yy0xNi4zLDAtMzEuMi02LTQyLjYtMTUuOWgtMTguOWMxNC41LDE4LDM2LjYsMjkuNiw2MS41LDI5LjYKCQkJYzI0LjgsMCw0Ny0xMS42LDYxLjUtMjkuNkg2MDYuMnoiLz4KCTwvZz4KCTxnPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik04ODEuNCwxNTQuOUw4ODEuNCwxNTQuOWMwLTcuMyw1LjMtMTMuNywxMy4yLTEzLjdjNC40LDAsNy4yLDEuMyw5LjgsMy41bC0xLjksMi4zYy0yLTEuOC00LjMtMy04LTMKCQkJYy01LjgsMC0xMCw0LjktMTAsMTAuOHYwLjFjMCw2LjMsNCwxMSwxMC40LDExYzMsMCw1LjgtMS4yLDcuNi0yLjZ2LTYuNmgtOHYtMi43aDEwLjl2MTAuNWMtMi41LDIuMi02LjEsNC0xMC42LDQKCQkJQzg4Ni41LDE2OC41LDg4MS40LDE2Mi41LDg4MS40LDE1NC45eiIvPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik05MTIuNywxNDEuN0g5MjRjMy4yLDAsNS44LDEsNy41LDIuNmMxLjMsMS4zLDIsMy4xLDIsNS4ydjAuMWMwLDQuNC0zLDYuOS03LjIsNy43bDguMSwxMC44aC0zLjdsLTcuNy0xMC4zCgkJCWgtNy41VjE2OGgtM1YxNDEuN3ogTTkyMy44LDE1NS4xYzQsMCw2LjgtMiw2LjgtNS40di0wLjFjMC0zLjItMi41LTUuMi02LjgtNS4yaC04LjF2MTAuN0g5MjMuOHoiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNOTM5LjMsMTU0LjlMOTM5LjMsMTU0LjljMC03LjQsNS41LTEzLjcsMTMuNS0xMy43czEzLjQsNi4zLDEzLjQsMTMuNnYwLjFjMCw3LjMtNS41LDEzLjctMTMuNSwxMy43CgkJCVM5MzkuMywxNjIuMiw5MzkuMywxNTQuOXogTTk2My4yLDE1NC45TDk2My4yLDE1NC45YzAtNi4xLTQuNC0xMS0xMC40LTExYy02LDAtMTAuMyw0LjgtMTAuMywxMC44djAuMWMwLDYsNC40LDEwLjksMTAuNCwxMC45CgkJCUM5NTguOSwxNjUuNyw5NjMuMiwxNjAuOSw5NjMuMiwxNTQuOXoiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNOTcyLjcsMTU3di0xNS4zaDN2MTUuMmMwLDUuNywzLjEsOC45LDguMSw4LjljNC45LDAsOC0yLjksOC04Ljd2LTE1LjNoM3YxNS4xYzAsNy43LTQuNCwxMS43LTExLDExLjcKCQkJQzk3Ny4yLDE2OC41LDk3Mi43LDE2NC41LDk3Mi43LDE1N3oiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAwMi4zLDE0MS43aDkuOWM2LDAsOS45LDMuMiw5LjksOC40djAuMWMwLDUuNy00LjgsOC42LTEwLjQsOC42aC02LjR2OS4zaC0zVjE0MS43eiBNMTAxMS44LDE1NgoJCQljNC40LDAsNy4yLTIuMyw3LjItNS44di0wLjFjMC0zLjgtMi44LTUuNy03LjEtNS43aC02LjdWMTU2SDEwMTEuOHoiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTAyOC4xLDE0MS43aDE5LjF2Mi43SDEwMzF2OWgxNC40djIuN0gxMDMxdjkuMmgxNi4zdjIuN2gtMTkuM1YxNDEuN3oiLz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTA2Mi40LDE2NC4xbDQuMS00LjljMi42LDIuMSw1LjUsMy4yLDguNiwzLjJjMiwwLDMtMC43LDMtMS44di0wLjFjMC0xLjEtMC45LTEuNy00LjQtMi41CgkJCWMtNS42LTEuMy0xMC0yLjktMTAtOC4zdi0wLjFjMC00LjksMy45LTguNCwxMC4yLTguNGM0LjUsMCw4LDEuMiwxMC45LDMuNWwtMy43LDUuMmMtMi40LTEuNy01LjEtMi42LTcuNC0yLjYKCQkJYy0xLjgsMC0yLjYsMC44LTIuNiwxLjd2MC4xYzAsMS4yLDAuOSwxLjcsNC42LDIuNmM2LjEsMS4zLDkuOCwzLjMsOS44LDguMnYwLjFjMCw1LjQtNC4zLDguNi0xMC43LDguNgoJCQlDMTA3MC4xLDE2OC41LDEwNjUuNiwxNjcsMTA2Mi40LDE2NC4xeiIvPgoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMDg5LjUsMTQxLjdoNy43bDYuMywxMC4ybDYuMy0xMC4yaDcuN1YxNjhoLTcuM3YtMTUuMmwtNi44LDEwLjNoLTAuMmwtNi43LTEwLjNWMTY4aC03LjJWMTQxLjd6Ii8+CgkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTExMjIuOCwxNDEuN2gxMy41YzMuMywwLDUuNywwLjgsNy4yLDIuNGMxLjEsMS4xLDEuNywyLjUsMS43LDQuM3YwLjFjMCwzLjEtMS43LDQuOS00LjEsNS45CgkJCWMzLjIsMS4xLDUuMiwyLjksNS4yLDYuNHYwLjFjMCw0LjUtMy43LDcuMy0xMCw3LjNoLTEzLjZWMTQxLjd6IE0xMTM0LjUsMTUyLjJjMi4yLDAsMy41LTAuOCwzLjUtMi4zdi0wLjFjMC0xLjQtMS4xLTIuMy0zLjMtMi4zCgkJCWgtNC44djQuNkgxMTM0LjV6IE0xMTM1LjYsMTYyLjJjMi4yLDAsMy41LTAuOSwzLjUtMi40di0wLjFjMC0xLjQtMS4xLTIuNC0zLjYtMi40aC01LjZ2NC45SDExMzUuNnoiLz4KCTwvZz4KCTxnPgoJCTxnPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMjcxLjQsNDMuMmg0MS4xYzEzLjMsMCwyMi41LDMuNSwyOC4zLDkuNGM1LjEsNSw3LjcsMTEuNyw3LjcsMjAuM3YwLjJjMCwxMy4zLTcuMSwyMi4xLTE3LjksMjYuNwoJCQkJbDIwLjcsMzAuM2gtMjcuOGwtMTcuNS0yNi4zaC0xMC42djI2LjNoLTI0LjFWNDMuMnogTTMxMS40LDg0LjljOC4yLDAsMTIuOS00LDEyLjktMTAuM3YtMC4yYzAtNi44LTUtMTAuMy0xMy0xMC4zaC0xNS44djIwLjkKCQkJCUgzMTEuNHoiLz4KCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTM2MC44LDQzLjJoNjkuOXYyMC41aC00Ni4xdjEzLjJoNDEuN3YxOWgtNDEuN3YxMy44aDQ2Ljd2MjAuNWgtNzAuNlY0My4yeiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDM3LjEsMTE3LjJsMTMuNC0xNmM4LjYsNi44LDE4LjEsMTAuNCwyOC4yLDEwLjRjNi41LDAsOS45LTIuMiw5LjktNnYtMC4yYzAtMy42LTIuOS01LjYtMTQuNy04LjMKCQkJCWMtMTguNS00LjItMzIuOC05LjQtMzIuOC0yNy4zdi0wLjJjMC0xNi4yLDEyLjgtMjcuOCwzMy43LTI3LjhjMTQuOCwwLDI2LjMsNCwzNS44LDExLjZsLTEyLjEsMTdjLTgtNS42LTE2LjYtOC42LTI0LjQtOC42CgkJCQljLTUuOCwwLTguNywyLjUtOC43LDUuNnYwLjJjMCw0LDMsNS43LDE1LDguNGMyMCw0LjMsMzIuNCwxMC44LDMyLjQsMjcuMXYwLjJjMCwxNy44LTE0LDI4LjMtMzUuMiwyOC4zCgkJCQlDNDYyLjQsMTMxLjYsNDQ3LjgsMTI2LjgsNDM3LjEsMTE3LjJ6Ii8+CgkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik01NTIuOSw0Mi41aDIzLjJsMzcsODcuNmgtMjUuOGwtNi4zLTE1LjVoLTMzLjVsLTYuMiwxNS41aC0yNS4zTDU1Mi45LDQyLjV6IE01NzQsOTUuOGwtOS43LTI0LjdsLTkuOCwyNC43CgkJCQlINTc0eiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNjIxLjYsNDMuMmgyMi41bDM1LjgsNDZ2LTQ2aDIzLjl2ODdoLTIxLjFsLTM3LjEtNDcuN3Y0Ny43aC0yMy45VjQzLjJ6Ii8+CgkJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik03NDAuNCw2NC4zaC0yNi4xVjQzLjJoNzYuM3YyMS4xaC0yNi4xdjY1LjhoLTI0LjFWNjQuM3oiLz4KCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTgwMS42LDQzLjJoMjQuMnY4N2gtMjQuMlY0My4yeiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNODQxLjcsNDMuMmgyNC4xVjEwOUg5MDh2MjEuMWgtNjYuMlY0My4yeiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNOTE4LjMsNDMuMmgyNC4xVjEwOWg0Mi4xdjIxLjFoLTY2LjJWNDMuMnoiLz4KCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTk5NC44LDQzLjJoNjkuOXYyMC41aC00Ni4xdjEzLjJoNDEuN3YxOWgtNDEuN3YxMy44aDQ2Ljd2MjAuNWgtNzAuNlY0My4yeiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTA3MS4xLDExNy4ybDEzLjQtMTZjOC42LDYuOCwxOC4xLDEwLjQsMjguMiwxMC40YzYuNSwwLDkuOS0yLjIsOS45LTZ2LTAuMmMwLTMuNi0yLjktNS42LTE0LjctOC4zCgkJCQljLTE4LjUtNC4yLTMyLjgtOS40LTMyLjgtMjcuM3YtMC4yYzAtMTYuMiwxMi44LTI3LjgsMzMuNy0yNy44YzE0LjgsMCwyNi4zLDQsMzUuOCwxMS42bC0xMi4xLDE3Yy04LTUuNi0xNi42LTguNi0yNC40LTguNgoJCQkJYy01LjgsMC04LjcsMi41LTguNyw1LjZ2MC4yYzAsNCwzLDUuNywxNSw4LjRjMjAsNC4zLDMyLjQsMTAuOCwzMi40LDI3LjF2MC4yYzAsMTcuOC0xNCwyOC4zLTM1LjIsMjguMwoJCQkJQzEwOTYuNSwxMzEuNiwxMDgxLjgsMTI2LjgsMTA3MS4xLDExNy4yeiIvPgoJCTwvZz4KCTwvZz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0xMzQsMTMxLjRjLTcuOS0wLjEtMTQuNiw0LjctMTcuNCwxMS42aC0xNS4xSDU2LjVjLTE2LjQsMC0yOS43LTEzLjMtMjkuNy0yOS43YzAtMy43LDAuNy03LjMsMi0xMC42CgkJYy00LjItMi44LTcuNS02LjYtOS44LTExLjFjLTMuNyw2LjUtNS44LDEzLjktNS44LDIxLjdjMCwyMy45LDE5LjUsNDMuNCw0My40LDQzLjRoNDQuOWgxNS4xYzIuNyw2LjcsOS4yLDExLjUsMTYuOCwxMS42CgkJYzEwLjIsMC4xLDE4LjUtOCwxOC43LTE4LjJDMTUyLjMsMTM5LjksMTQ0LjEsMTMxLjUsMTM0LDEzMS40eiIvPgoJPGc+CgkJPHBhdGggY2xhc3M9InN0MiIgZD0iTTE1MC44LDE1Ni43YzAuMS0wLjEsMC4xLTAuMywwLjEtMC40QzE1MC45LDE1Ni40LDE1MC45LDE1Ni41LDE1MC44LDE1Ni43TDE1MC44LDE1Ni43eiIvPgoJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0yMjMuNSw3MS44YzAtMC4yLDAtMC41LDAtMC43YzAuMS0xMC4yLTgtMTguNS0xOC4yLTE4LjdjLTEwLjItMC4xLTE4LjUsOC0xOC43LDE4LjIKCQkJYy0wLjEsMTAuMiw4LDE4LjUsMTguMiwxOC43YzQuOSwwLjEsOS40LTEuOCwxMi43LTQuOWMxMy4xLDMuMSwyMi45LDE0LjksMjIuOSwyOC45YzAsMTYuNC0xMy4zLDI5LjctMjkuNywyOS43aC00OS4xCgkJCWMwLjYsMi4zLDAuOCw0LjgsMC44LDcuMmMwLDIuMi0wLjMsNC40LTAuOCw2LjRoNDkuMmMyMy45LDAsNDMuNC0xOS41LDQzLjQtNDMuNEMyNTQuMiw5My44LDI0MS4zLDc3LjIsMjIzLjUsNzEuOHoiLz4KCTwvZz4KCTxnPgoJCTxwYXRoIGNsYXNzPSJzdDMiIGQ9Ik0yMDUuMiw1Mi40Yy0wLjMsMC0wLjYsMC0wLjgsMGMwLjQsMCwwLjcsMCwxLjEsMEMyMDUuMyw1Mi40LDIwNS4zLDUyLjQsMjA1LjIsNTIuNHoiLz4KCQk8cGF0aCBjbGFzcz0ic3QzIiBkPSJNMTU5LjgsMzcuN0MxNDYuOSwyMC45LDEyNy4yLDExLDEwNS44LDExYy0zMS4xLDAtNTcuNSwyMS4xLTY1LjQsNDkuOGMtOCwyLTEzLjksOS0xNCwxNy42CgkJCWMtMC4xLDEwLjIsOCwxOC41LDE4LjIsMTguN2MxMC4yLDAuMSwxOC41LTgsMTguNy0xOC4yYzAuMS02LjktMy42LTEzLTkuMi0xNi4yYzYuOS0yMiwyNy41LTM4LjEsNTEuOC0zOC4xCgkJCWMxOC42LDAsMzUuNyw5LjQsNDUuNywyNS4xbDMuMyw1LjJsNS41LTIuOGMzLjktMiw4LjEtMywxMi40LTNjMy45LDAsNy42LDAuOCwxMSwyLjNjMy40LTMuOCw3LjktNi43LDEyLjktOC4zCgkJCWMtNi43LTQuOC0xNS03LjctMjMuOS03LjdDMTY4LjMsMzUuNiwxNjMuOSwzNi4zLDE1OS44LDM3Ljd6Ii8+Cgk8L2c+CjwvZz4KPC9zdmc+Cg==" alt="Résantilles">
+  </div>
+  <div class="header-right">
+    <span class="header-label">Nos Engagements</span>
+    <div class="dot-sep"></div>
+    <span class="slide-counter"><span class="cur" id="curNum">01</span>&thinsp;/&thinsp;10</span>
+  </div>
+</header>
+<main><div class="slides-container" id="sc"></div></main>
+<footer>
+  <div class="dots" id="dots"></div>
+  <div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+  <div class="time-lbl" id="tl">8s</div>
+</footer>
+<script>
+const DURATION=12000,TRANS=680;
+const R="#E8335E",T="#00B1B2",G="#FBBA00";
+const rules=[
+  {num:"01",accent:R,tag:"Priorité N°1",title:"Le client d'abord, <em>toujours</em>",text:"Nos clients nous font vivre. Nous soignons chacun d'eux avec la même exigence et la même attention — à chaque interaction, sans exception."},
+  {num:"02",accent:T,tag:"Réactivité",title:"Répondre dans <em>la journée</em>",text:"Nous répondons à chaque demande client le jour même. Si c'est impossible, nous le prévenons. Le silence n'est jamais une réponse acceptable."},
+  {num:"03",accent:G,tag:"Croissance",title:"Nos clients, nos <em>meilleurs ambassadeurs</em>",text:"Un client satisfait nous recommande. C'est notre levier commercial le plus puissant. Chaque interaction est une opportunité de grandir ensemble."},
+  {num:"04",accent:R,tag:"Bien-être équipe",title:"Prenons soin de <em>nos collaborateurs</em>",text:"Des collaborateurs épanouis créent des clients satisfaits. Nous nous respectons mutuellement, nous nous soutenons et nous nous faisons confiance."},
+  {num:"05",accent:T,tag:"Compétences",title:"Toujours <em>en progression</em>",text:"Nous ne subissons pas l'évolution technologique, nous l'anticipons. La formation est notre responsabilité individuelle — nous sommes proactifs, sans attendre que tout vienne de l'entreprise."},
+  {num:"06",accent:G,tag:"Traçabilité",title:"Tout dans <em>le CRM / ERP</em>",text:"Ce qui n'est pas tracé n'existe pas. Tickets, devis, interventions, relances — nous renseignons nos outils systématiquement pour garantir un suivi irréprochable."},
+  {num:"07",accent:R,tag:"Culture d'équipe",title:"La transparence <em>avant tout</em>",text:"On informe ses collègues de ses problématiques. On partage l'information en équipe chaque semaine. L'information retenue est un frein collectif."},
+  {num:"08",accent:T,tag:"Communication",title:"<em>Zéro email</em> en interne",text:"L'email est réservé à nos clients et partenaires externes. En interne, nous utilisons nos outils collaboratifs pour des échanges plus rapides et plus traçables."},
+  {num:"09",accent:G,tag:"Professionnalisme",title:"Le geste <em>irréprochable</em>",text:"On prévient le client avant d'intervenir, on bloque son agenda, et on lui fait un récap complet après chaque intervention. Chaque détail reflète notre image."},
+  {num:"10",accent:R,tag:"Engagement",title:"On tient <em>chaque promesse</em>",text:"On ne promet que ce qu'on peut tenir — et on tient tout ce qu'on promet. Un engagement non respecté, c'est un client perdu et une réputation entamée.",proposed:true}
+];
+
+const sc=document.getElementById("sc"),dotsEl=document.getElementById("dots"),pf=document.getElementById("pf"),curNum=document.getElementById("curNum"),tl=document.getElementById("tl");
+let idx=0,rAF=null,t0=null;
+
+rules.forEach((r,i)=>{
+  const s=document.createElement("div");
+  s.className="slide";
+  s.style.setProperty("--accent",r.accent);
+  s.innerHTML=`<div class="ghost-num">${r.num}</div><div class="slide-content"><div class="rule-tag"><span class="tag-num">RÈGLE ${r.num}</span><span>·</span><span>${r.tag.toUpperCase()}</span></div><h2 class="rule-title">${r.title}</h2><div class="rule-divider"></div><p class="rule-text">${r.text}</p>${r.proposed?'<div class="rule-proposed">✦ Règle proposée — à valider en équipe</div>':""}</div>`;
+  sc.appendChild(s);
+  const d=document.createElement("div");
+  d.className="dot";
+  d.onclick=()=>go(i);
+  dotsEl.appendChild(d);
+});
+
+const slides=document.querySelectorAll(".slide"),dots=document.querySelectorAll(".dot");
+
+function setAccent(a){document.documentElement.style.setProperty("--current-accent",a)}
+
+function go(i){
+  const old=slides[idx];
+  old.classList.remove("entering");
+  old.classList.add("exiting");
+  setTimeout(()=>old.classList.remove("exiting"),TRANS);
+  idx=i;
+  dots.forEach((d,k)=>d.classList.toggle("active",k===idx));
+  curNum.textContent=rules[idx].num;
+  setAccent(rules[idx].accent);
+  setTimeout(()=>{slides[idx].classList.add("entering");startProg();},90);
+}
+
+function startProg(){
+  if(rAF)cancelAnimationFrame(rAF);
+  pf.style.width="0%";
+  t0=performance.now();
+  const tick=now=>{
+    const e=now-t0,p=Math.min(e/DURATION*100,100);
+    pf.style.width=p+"%";
+    tl.textContent=Math.max(0,Math.ceil((DURATION-e)/1000))+"s";
+    if(e<DURATION){rAF=requestAnimationFrame(tick)}else{go((idx+1)%rules.length)}
+  };
+  rAF=requestAnimationFrame(tick);
+}
+
+setAccent(rules[0].accent);
+dots[0].classList.add("active");
+slides[0].classList.add("entering");
+curNum.textContent=rules[0].num;
+setTimeout(startProg,700);
+</script>
+</body>
+</html>
